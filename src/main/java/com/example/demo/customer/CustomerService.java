@@ -15,7 +15,7 @@ public class CustomerService {
     }
 
     List<Customer> getCustomers(){
-        return customerRepo.getCustomer();
+        return customerRepo.getCustomers();
     }
 
 }

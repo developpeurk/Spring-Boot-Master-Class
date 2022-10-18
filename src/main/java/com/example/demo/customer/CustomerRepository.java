@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CustomerRepository implements CustomerRepo {
     @Override
-    public List<Customer> getCustomer() {
+    public List<Customer> getCustomers() {
         // TODO connect to real db
         return Collections.singletonList(
                 new Customer(1L, "TODO. Implement real db", "password")

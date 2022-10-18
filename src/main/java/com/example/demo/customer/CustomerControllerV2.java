@@ -2,7 +2,6 @@ package com.example.demo.customer;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,9 +16,18 @@ public class CustomerControllerV2 {
     }
 
 
-    @GetMapping(value = "all")
-    List<Customer> getCustomer() {
-        return Collections.singletonList(new Customer(0L, "V2", "v1"));
+    @GetMapping(path = "{customerId}")
+    Customer getCustomer(@PathVariable("customerId") Long id) {
+        return customerService.getCustomers()
+                .stream()
+                .filter(customer -> customer.getId().equals(id))
+                .findFirst()
+                .orElseThrow(()-> new IllegalStateException("Customer not found "));
+    }
+
+    @GetMapping
+    List<Customer> getCustomers() {
+        return customerService.getCustomers();
     }
 
     @PostMapping
