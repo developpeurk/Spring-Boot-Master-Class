@@ -2,7 +2,7 @@ package com.example.demo.customer;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,13 +27,13 @@ public class CustomerControllerV2 {
     }
 
     @PostMapping
-    void createNewCustomer(@RequestBody Customer customer){
+    void createNewCustomer(@Valid @RequestBody Customer customer){
         System.out.println("POST REQUEST ...");
         System.out.println(customer);
     }
 
     @PutMapping
-    void updateCustomer(@RequestBody Customer customer){
+    void updateCustomer(@Valid @RequestBody Customer customer){
         System.out.println("UPDATE REQUEST ...");
         System.out.println(customer);
     }
