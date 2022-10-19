@@ -29,7 +29,7 @@ public class CustomerService {
                 () -> {
                     NotFoundException notFoundException = new NotFoundException(
                             "customer with id " + id + " not found");
-                    LOGGER.error("error in getting Customer{} ", id, notFoundException);
+                    LOGGER.error("error in getting Customer {} ", id, notFoundException);
                     return notFoundException;
                 });
     }
