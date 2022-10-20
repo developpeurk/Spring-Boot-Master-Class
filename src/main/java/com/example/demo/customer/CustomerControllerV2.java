@@ -1,6 +1,7 @@
 package com.example.demo.customer;
 
 import com.example.demo.exceptions.ApiRequestException;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -8,13 +9,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v2/customer")
+@AllArgsConstructor
 public class CustomerControllerV2 {
 
     private final CustomerService customerService;
-
-    public CustomerControllerV2(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 
 
     @GetMapping(path = "{customerId}")

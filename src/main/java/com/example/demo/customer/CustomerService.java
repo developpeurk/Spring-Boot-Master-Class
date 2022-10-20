@@ -1,26 +1,21 @@
 package com.example.demo.customer;
 
 import com.example.demo.exceptions.NotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class CustomerService {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
     private final CustomerRepository customerRepository;
 
-    @Autowired
-    public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
-
     List<Customer> getCustomers(){
-        LOGGER.info("getCustomers was called");
+        log.info("getCustomers was called");
         return customerRepository.findAll();
     }
 
@@ -29,7 +24,7 @@ public class CustomerService {
                 () -> {
                     NotFoundException notFoundException = new NotFoundException(
                             "customer with id " + id + " not found");
-                    LOGGER.error("error in getting Customer {} ", id, notFoundException);
+                    log.error("error in getting Customer {} ", id, notFoundException);
                     return notFoundException;
                 });
     }

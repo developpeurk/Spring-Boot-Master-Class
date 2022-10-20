@@ -1,6 +1,10 @@
 package com.example.demo.customer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +15,10 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Customer {
 
     @Id
@@ -27,11 +35,9 @@ public class Customer {
     @Email
     private  String email;
 
-    public Customer() {
-    }
 
-    Customer(Long id, String name, String password, String email) {
-        this.id = id;
+
+    Customer(String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
@@ -52,13 +58,4 @@ public class Customer {
 
     public String getEmail() { return email; }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
